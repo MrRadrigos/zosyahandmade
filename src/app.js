@@ -175,6 +175,8 @@
         main.classList.add('is-switching');
         setTimeout(function () {
           img.onload = img.onerror = function () { main.classList.remove('is-switching'); };
+          img.style.maxWidth = 'min(100%,' + th.dataset.w + 'px)';
+          img.width = th.dataset.w; img.height = th.dataset.h;
           img.srcset = th.dataset.srcset;
           img.src = th.dataset.src;
         }, reduceMotion ? 0 : 200);

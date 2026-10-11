@@ -57,6 +57,10 @@ section[id], div[id] { scroll-margin-top: var(--header-h); }
 .ph > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .ph__label { position: relative; font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: rgba(0,0,0,0.45); letter-spacing: 0.04em; }
 .ph--has-img .ph__label { display: none; }
+/* Работа целиком, без обрезки: «висит» на светлой стене. multiply растворяет белый фон фото в подложке */
+.ph--fit { background: var(--bg-alt); }
+.ph--fit::before { display: none; }
+.ph--fit > img { object-fit: contain; padding: 7%; mix-blend-mode: multiply; }
 
 /* ---------- Шапка ---------- */
 .header { position: sticky; top: 0; z-index: 20; background: rgba(250,248,244,0.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
@@ -88,6 +92,10 @@ section[id], div[id] { scroll-margin-top: var(--header-h); }
 /* Первый экран */
 .hero { padding: 0 0 56px; }
 .hero__img { width: 100%; height: clamp(360px, 62vh, 760px); justify-content: flex-end; padding: 16px; }
+/* С фото: картина целиком, не больше своего настоящего размера и не выше 72% экрана */
+.hero__img.ph--has-img { height: auto; justify-content: center; padding: clamp(20px, 4vw, 48px) 20px 0; background: none; }
+.hero__img.ph--has-img::before { display: none; }
+.hero__img.ph--has-img > img { position: static; width: auto; height: auto; max-height: min(72vh, 760px); object-fit: contain; mix-blend-mode: multiply; }
 .hero__text { padding: 36px 20px 0; display: grid; gap: 20px; max-width: 880px; }
 .hero h1 { font-size: clamp(40px, 8vw, 84px); line-height: 1; letter-spacing: -0.01em; text-wrap: balance; }
 .hero__lead { font-size: clamp(16px, 2vw, 18px); color: var(--ink-2); max-width: 560px; text-wrap: pretty; }
@@ -168,7 +176,7 @@ section[id], div[id] { scroll-margin-top: var(--header-h); }
 /* На странице картины работа видна целиком, без обрезки */
 .gallery__main.ph--has-img { aspect-ratio: auto; padding: 0; background: none; justify-content: center; }
 .gallery__main.ph--has-img::before { display: none; }
-.gallery__main.ph--has-img > img { position: static; width: 100%; height: auto; max-height: 85vh; object-fit: contain; }
+.gallery__main.ph--has-img > img { position: static; width: 100%; height: auto; max-height: 85vh; object-fit: contain; mix-blend-mode: multiply; }
 .thumbs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .thumb { cursor: pointer; padding: 0; aspect-ratio: 1; border: 1.5px solid transparent; background-color: var(--tone); background-image: repeating-linear-gradient(135deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 8px); position: relative; display: flex; align-items: flex-end; overflow: hidden; }
 .thumb[aria-pressed="true"] { border-color: var(--ink); }
