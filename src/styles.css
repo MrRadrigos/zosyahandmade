@@ -96,6 +96,14 @@ section[id], div[id] { scroll-margin-top: var(--header-h); }
 .hero__img.ph--has-img { height: auto; justify-content: center; padding: clamp(20px, 4vw, 48px) 20px 0; background: none; }
 .hero__img.ph--has-img::before { display: none; }
 .hero__img.ph--has-img > img { position: static; width: auto; height: auto; max-height: min(72vh, 760px); object-fit: contain; mix-blend-mode: multiply; }
+/* Компьютер: текст слева, картина справа — на первом экране видно и работу, и заголовок с кнопкой */
+@media (min-width: 960px) {
+  .hero--photo { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: clamp(32px, 4vw, 72px); padding: clamp(32px, 6vh, 72px) 20px clamp(48px, 8vh, 88px); }
+  .hero--photo .hero__text { order: -1; padding: 0; }
+  .hero--photo .hero__img { padding: 0; }
+  .hero--photo .hero__img > img { max-height: min(68vh, 640px); }
+  .hero.hero--photo h1 { font-size: clamp(40px, 4vw, 62px); }
+}
 .hero__text { padding: 36px 20px 0; display: grid; gap: 20px; max-width: 880px; }
 .hero h1 { font-size: clamp(40px, 8vw, 84px); line-height: 1; letter-spacing: -0.01em; text-wrap: balance; }
 .hero__lead { font-size: clamp(16px, 2vw, 18px); color: var(--ink-2); max-width: 560px; text-wrap: pretty; }
