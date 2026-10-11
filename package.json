@@ -1,0 +1,14 @@
+{
+  "name": "zosyahandmade",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ZosyaHandmadePictures — сайт-галерея текстильных картин",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node serve.mjs"
+  },
+  "dependencies": {
+    "sharp": "0.35.5"
+  }
+}

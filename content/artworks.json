@@ -1,0 +1,138 @@
+[
+  {
+    "slug": "cat-in-red-glasses",
+    "title": {
+      "ru": "Кошка в красных очках",
+      "en": "Cat in Red Glasses"
+    },
+    "cats": [
+      "animals"
+    ],
+    "w": 40,
+    "h": 50,
+    "framed": true,
+    "price": 22000,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [],
+    "desc": {
+      "ru": "Эта кошка создана из тканей разных фактур и оттенков. Красные очки, многоцветный шарф и спокойный серо-голубой фон делают работу современной и выразительной.",
+      "en": "This one-of-a-kind textile artwork combines carefully selected fabrics, rich textures and a contemporary colour palette. The red glasses and multicoloured scarf add a playful character to the piece."
+    },
+    "tone": "#B9C4C6"
+  },
+  {
+    "slug": "fox-in-autumn-forest",
+    "title": {
+      "ru": "Лиса в осеннем лесу",
+      "en": "Fox in the Autumn Forest"
+    },
+    "cats": [
+      "animals",
+      "landscapes"
+    ],
+    "w": 30,
+    "h": 40,
+    "framed": true,
+    "price": 16000,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [],
+    "desc": {
+      "ru": "Описание работы — заглушка.",
+      "en": "Artwork description — placeholder."
+    },
+    "tone": "#D4B79A"
+  },
+  {
+    "slug": "portrait-in-blue",
+    "title": {
+      "ru": "Портрет в синем",
+      "en": "Portrait in Blue"
+    },
+    "cats": [
+      "portraits"
+    ],
+    "w": 50,
+    "h": 60,
+    "framed": true,
+    "price": 28000,
+    "priceUsd": null,
+    "status": "sold",
+    "photos": [],
+    "desc": {
+      "ru": "Описание работы — заглушка.",
+      "en": "Artwork description — placeholder."
+    },
+    "tone": "#AEB6C8"
+  },
+  {
+    "slug": "northern-lake",
+    "title": {
+      "ru": "Северное озеро",
+      "en": "Northern Lake"
+    },
+    "cats": [
+      "landscapes",
+      "interior"
+    ],
+    "w": 50,
+    "h": 70,
+    "framed": true,
+    "price": 30000,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [],
+    "desc": {
+      "ru": "Описание работы — заглушка.",
+      "en": "Artwork description — placeholder."
+    },
+    "tone": "#A9BDB4"
+  },
+  {
+    "slug": "sunflowers-after-van-gogh",
+    "title": {
+      "ru": "Подсолнухи (по Ван Гогу)",
+      "en": "Sunflowers (after Van Gogh)"
+    },
+    "cats": [
+      "masterpieces",
+      "interior"
+    ],
+    "w": 40,
+    "h": 50,
+    "framed": true,
+    "price": 24000,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [],
+    "desc": {
+      "ru": "Описание работы — заглушка.",
+      "en": "Artwork description — placeholder."
+    },
+    "tone": "#DCCB96"
+  },
+  {
+    "slug": "letter-a-with-bunny",
+    "title": {
+      "ru": "Буква «А» с зайчиком",
+      "en": "Letter A with a Bunny"
+    },
+    "cats": [
+      "kids",
+      "names"
+    ],
+    "w": 25,
+    "h": 25,
+    "framed": false,
+    "price": 9000,
+    "priceUsd": null,
+    "status": "sold",
+    "photos": [],
+    "desc": {
+      "ru": "Описание работы — заглушка.",
+      "en": "Artwork description — placeholder."
+    },
+    "tone": "#E1C7C2"
+  }
+]
