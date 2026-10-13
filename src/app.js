@@ -1,24 +1,64 @@
 (function () {
   var html = document.documentElement;
   var LANG_KEY = 'zosya-lang';
+  var CONSENT_KEY = 'zosya-consent';
   var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var lang = function () { return html.lang === 'en' ? 'en' : 'ru'; };
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} }
+  };
 
   // ---------- Язык ----------
-  function setLang(l, save) {
-    html.lang = l;
-    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.dataset.setLang === l));
-    });
-    document.querySelectorAll('[data-aria-ru]').forEach(function (el) {
-      el.setAttribute('aria-label', el.getAttribute('data-aria-' + l));
-    });
-    if (save) { try { localStorage.setItem(LANG_KEY, l); } catch (e) {} }
-  }
-  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-    b.addEventListener('click', function () { setLang(b.dataset.setLang, true); });
+  // У каждой страницы свой язык и адрес (/ru/…, /en/…); запоминаем выбор, чтобы корень сайта открывал нужную версию
+  document.querySelectorAll('[data-lang-link]').forEach(function (a) {
+    a.addEventListener('click', function () { store.set(LANG_KEY, a.dataset.langLink); });
   });
-  setLang(lang(), false);
+  // Страница 404 одна на оба языка — там язык переключается без перехода
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+    b.setAttribute('aria-pressed', String(b.dataset.setLang === html.lang));
+    b.addEventListener('click', function () {
+      html.lang = b.dataset.setLang;
+      store.set(LANG_KEY, html.lang);
+      document.querySelectorAll('[data-set-lang]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    });
+  });
+
+  // ---------- Яндекс Метрика: только после согласия ----------
+  var YM = +html.dataset.ym || 0;
+  function loadMetrika() {
+    if (!YM || window.ym) return;
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+      m[i].l = 1 * new Date();
+      k = e.createElement(t); a = e.getElementsByTagName(t)[0];
+      k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    window.ym(YM, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+  }
+  // Цели: сколько людей открыло окно покупки, перешло в мессенджер, скопировало сообщение
+  function goal(name, params) {
+    if (YM && window.ym) window.ym(YM, 'reachGoal', name, params || {});
+  }
+  var consent = document.getElementById('consent');
+  if (YM) {
+    var choice = store.get(CONSENT_KEY);
+    if (choice === 'yes') loadMetrika();
+    else if (!choice && consent) consent.hidden = false;
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-consent]');
+    if (b) {
+      store.set(CONSENT_KEY, b.dataset.consent);
+      consent.hidden = true;
+      if (b.dataset.consent === 'yes') loadMetrika();
+    }
+    if (e.target.closest('[data-consent-reset]')) {
+      store.set(CONSENT_KEY, null);
+      if (consent) consent.hidden = false;
+      var done = document.getElementById('consent-reset-done');
+      if (done) done.hidden = false;
+    }
+  });
 
   // ---------- Появление блоков при прокрутке ----------
   var reveals = document.querySelectorAll('.reveal');
@@ -100,45 +140,37 @@
     try { document.execCommand('copy'); } catch (e) {}
     ta.remove();
   }
-  function withMessage(link, text) {
+  var sheet = document.getElementById('sheet');
+  var sheetData = { msg: '', slug: '' };
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="https://t.me/"], a[href^="https://instagram.com/"]');
+    if (!link) return;
+    var tg = /^https:\/\/t\.me\//.test(link.href);
+    var inSheet = link.hasAttribute('data-sheet-msg');
+    var text = inSheet ? sheetData.msg : link.dataset.msg;
+    var slug = inSheet ? sheetData.slug : link.dataset.slug;
+    goal(tg ? 'telegram_click' : 'instagram_click', slug ? { artwork: slug } : {});
+    if (!text) return;
     copyText(text);
     // Telegram умеет подставлять текст в поле ввода по ссылке t.me/username?text=...
-    if (/^https:\/\/t\.me\//.test(link.href)) {
-      link.href = link.href.split('?')[0] + '?text=' + encodeURIComponent(text);
-    }
+    if (tg) link.href = link.href.split('?')[0] + '?text=' + encodeURIComponent(text);
     showToast();
-  }
-  document.addEventListener('click', function (e) {
-    var link = e.target.closest('a[data-msg-ru], a[data-sheet-msg]');
-    if (!link) return;
-    var text = link.hasAttribute('data-sheet-msg') ? sheetMsg[lang()] : link.getAttribute('data-msg-' + lang());
-    if (text) withMessage(link, text);
   });
 
   // ---------- Окно «Где вам удобно написать?» ----------
-  var sheet = document.getElementById('sheet');
-  var sheetMsg = { ru: '', en: '' };
   var lastFocus = null;
-  function bilingual(el, ru, en) {
-    el.textContent = '';
-    [['ru', ru], ['en', en]].forEach(function (p) {
-      var s = document.createElement('span');
-      s.setAttribute('data-l', p[0]);
-      s.textContent = p[1];
-      el.appendChild(s);
-    });
-  }
   function openSheet(btn) {
     if (!sheet) return;
     var d = btn.dataset;
-    bilingual(sheet.querySelector('.sheet__sub'), d.titleRu + ' · ' + d.priceRu, d.titleEn + ' · ' + d.priceEn);
-    sheetMsg = { ru: d.msgRu, en: d.msgEn };
-    bilingual(sheet.querySelector('.sheet__msg-text'), d.msgRu, d.msgEn);
+    sheet.querySelector('.sheet__sub').textContent = d.title + ' · ' + d.price;
+    sheet.querySelector('.sheet__msg-text').textContent = d.msg;
+    sheetData = { msg: d.msg, slug: d.slug };
     lastFocus = btn;
     sheet.classList.remove('is-closing');
     sheet.hidden = false;
     document.body.classList.add('no-scroll');
     sheet.querySelector('.sheet__close').focus({ preventScroll: true });
+    goal('buy_open', { artwork: d.slug });
   }
   function closeSheet() {
     if (!sheet || sheet.hidden || sheet.classList.contains('is-closing')) return;
@@ -158,7 +190,11 @@
   if (sheet) {
     sheet.addEventListener('click', function (e) {
       if (e.target === sheet || e.target.closest('.sheet__close')) closeSheet();
-      if (e.target.closest('.sheet__copy')) { copyText(sheetMsg[lang()]); showToast(); }
+      if (e.target.closest('.sheet__copy')) {
+        copyText(sheetData.msg);
+        showToast();
+        goal('message_copy', { artwork: sheetData.slug });
+      }
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
   }
@@ -181,7 +217,7 @@
           img.src = th.dataset.src;
         }, reduceMotion ? 0 : 200);
       } else {
-        main.querySelector('.ph__label').innerHTML = 'photo · ' + th.querySelector('.ph__label').innerHTML;
+        main.querySelector('.ph__label').textContent = 'photo · ' + th.querySelector('.ph__label').textContent;
       }
     });
   });

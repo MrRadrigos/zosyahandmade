@@ -9,6 +9,8 @@
     "dev": "node serve.mjs"
   },
   "dependencies": {
+    "@fontsource/cormorant-garamond": "5.3.0",
+    "@fontsource/manrope": "5.3.0",
     "sharp": "0.35.5"
   }
 }

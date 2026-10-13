@@ -51,7 +51,29 @@ export const T = {
     nfText: 'Возможно, картина уже продана или страница переехала. Загляните в готовые работы — или напишите мне, и я создам похожую специально для вас.',
     nfBtn: 'Смотреть готовые работы →',
     nfTg: 'Написать в Telegram',
-    nfNote: 'Если вы пришли по пину из Pinterest — пришлите мне его скриншот, и я подскажу, что похожее есть сейчас.'
+    nfNote: 'Если вы пришли по пину из Pinterest — пришлите мне его скриншот, и я подскажу, что похожее есть сейчас.',
+    // Заголовок главной во вкладке и поиске
+    homeTitle: 'ZosyaHandmadePictures — текстильные картины ручной работы',
+    langName: 'Русский',
+    // Cookies и Метрика
+    consentText: 'Я использую cookies и Яндекс Метрику, чтобы понимать, сколько людей заходит на сайт и какие работы им интересны.',
+    consentAccept: 'Принять', consentDecline: 'Отклонить', consentMore: 'Подробнее',
+    consentReset: 'Изменить решение о cookies',
+    consentResetDone: 'Готово. Выбор появится внизу страницы.',
+    // Политика конфиденциальности ({site}, {owner}, {contact} подставляются при сборке)
+    privacyLink: 'Политика конфиденциальности',
+    privacyTitle: 'Политика конфиденциальности',
+    privacyUpdated: 'Обновлено 13 октября 2026 г.',
+    privacyOwnerDefault: 'Татьяна, автор ZosyaHandmadePictures',
+    privacy: [
+      ['Кто отвечает за данные', 'Сайт {site} ведёт {owner}. По любым вопросам о данных пишите: {contact}.'],
+      ['Что собирается', 'Сайт не просит вводить имя, телефон или email и не хранит переписку. Если вы нажали «Принять» в уведомлении о cookies, сервис Яндекс Метрика собирает данные о посещении: IP-адрес, тип браузера и устройства, cookies, просмотренные страницы, действия на сайте и источник перехода. Если вы нажали «Отклонить», счётчик не загружается.'],
+      ['Зачем', 'Чтобы понимать, сколько людей заходит на сайт, откуда они приходят и какие работы им интересны, и делать сайт удобнее. Данные не продаются и не используются для показа рекламы.'],
+      ['Основание и срок', 'Статистика собирается только с вашего согласия. Отозвать его можно в любой момент кнопкой ниже. Собранные данные хранятся в Яндекс Метрике (ООО «ЯНДЕКС») по правилам этого сервиса.'],
+      ['Переписка о покупке', 'Если вы пишете мне в Telegram или Instagram, переписка хранится в этих сервисах по их правилам. Я использую её только чтобы ответить на вопросы, оформить покупку и доставку.'],
+      ['Хостинг', 'Сайт размещён на GitHub Pages (GitHub, Inc.). Как и любой веб-сервер, он получает IP-адрес при открытии страниц. Шрифты и остальные файлы сайта загружаются с того же сервера, без сторонних сервисов.'],
+      ['Ваши права', 'Вы можете узнать, какие данные о вас обрабатываются, потребовать их исправления или удаления и отозвать согласие. Напишите: {contact} — я отвечу в течение 10 рабочих дней.']
+    ]
   },
   en: {
     nav: ['Home', 'Available Art', 'Custom Art', 'About', 'Delivery & Contact'],
@@ -102,6 +124,25 @@ export const T = {
     nfText: 'The piece may have been sold, or the page has moved. Take a look at the available works — or message me and I’ll create a similar one just for you.',
     nfBtn: 'Explore Available Art →',
     nfTg: 'Message on Telegram',
-    nfNote: 'Came from a Pinterest pin? Send me a screenshot and I’ll show you what similar pieces are available now.'
+    nfNote: 'Came from a Pinterest pin? Send me a screenshot and I’ll show you what similar pieces are available now.',
+    homeTitle: 'ZosyaHandmadePictures — Original Handmade Textile Art',
+    langName: 'English',
+    consentText: 'I use cookies and Yandex Metrica analytics to understand how many people visit the site and which artworks they like.',
+    consentAccept: 'Accept', consentDecline: 'Decline', consentMore: 'Learn more',
+    consentReset: 'Change cookie preferences',
+    consentResetDone: 'Done. The choice will appear at the bottom of the page.',
+    privacyLink: 'Privacy policy',
+    privacyTitle: 'Privacy policy',
+    privacyUpdated: 'Last updated: October 13, 2026',
+    privacyOwnerDefault: 'Tanya, the artist behind ZosyaHandmadePictures',
+    privacy: [
+      ['Who is responsible', 'The website {site} is run by {owner}. For any questions about your data, contact: {contact}.'],
+      ['What is collected', 'The site does not ask for your name, phone number or email and does not store any messages. If you click “Accept” in the cookie notice, Yandex Metrica collects visit data: IP address, browser and device type, cookies, pages viewed, actions on the site and the referring source. If you click “Decline”, the analytics script is not loaded.'],
+      ['Why', 'To understand how many people visit, where they come from and which artworks interest them, and to improve the site. The data is never sold or used for advertising.'],
+      ['Legal basis and retention', 'Analytics runs only with your consent (GDPR Art. 6(1)(a)). You can withdraw it at any time with the button below. Collected data is stored by Yandex Metrica (YANDEX LLC) under its own terms.'],
+      ['Messages about purchases', 'If you message me on Telegram or Instagram, the conversation is stored by those services under their terms. I use it only to answer your questions and arrange purchase and shipping.'],
+      ['Hosting', 'The site is hosted on GitHub Pages (GitHub, Inc.). Like any web server, it receives your IP address when pages are loaded. Fonts and all other files are served from the same server, with no third-party services.'],
+      ['Your rights', 'You can ask which data about you is processed, have it corrected or deleted, and withdraw your consent. Contact: {contact}. You also have the right to lodge a complaint with your local data protection authority.']
+    ]
   }
 };

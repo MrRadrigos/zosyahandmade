@@ -10,7 +10,10 @@
   var MAX_PHOTOS = 6;
   var MAX_SIDE = 2400;
   var SITE_HOST = (CFG.siteUrl || '').replace(/^https?:\/\//, '');
-  var SITE_LINK = LOCAL ? '/' : (CFG.siteUrl || '/') + '/';
+  var SITE_LINK = LOCAL ? '/' : (CFG.siteUrl || '') + '/';
+  // Страница работы на сайте: у каждой своя русская и английская версия
+  var artUrl = function (lang, slug) { return SITE_LINK + lang + '/art/' + slug + '/'; };
+  var publicArtUrl = function (lang, slug) { return (CFG.siteUrl || location.origin) + '/' + lang + '/art/' + slug + '/'; };
 
   var S = {
     view: 'loading', artworks: [], settings: {}, baseSha: null,
@@ -293,7 +296,7 @@
     S.view = 'loading'; render();
     return api.load().then(function (j) {
       S.artworks = j.artworks || [];
-      S.settings = Object.assign({ usdRate: 80, telegram: '', instagram: '', pinterest: '', heroPhoto: '', aboutPhoto: '', customPhotos: [] }, j.settings);
+      S.settings = Object.assign({ usdRate: 80, telegram: '', instagram: '', pinterest: '', heroPhoto: '', aboutPhoto: '', customPhotos: [], metrikaId: '', ownerName: '', ownerEmail: '' }, j.settings);
       while (S.settings.customPhotos.length < 5) S.settings.customPhotos.push('');
       S.baseSha = j.sha || null;
       S.pending = { uploads: new Map(), deletes: new Set() };
@@ -510,6 +513,14 @@
     window.scrollTo(0, 0);
   }
 
+  // Строка со ссылкой и кнопкой «Скопировать»
+  function copyLine(label, url) {
+    var btn = h('button', { type: 'button', class: 'btn btn--ghost btn--sm', onclick: function () {
+      (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(function () { btn.textContent = 'Скопировано'; setTimeout(function () { btn.textContent = 'Скопировать'; }, 2000); }, function () { prompt('Скопируйте ссылку:', url); });
+    } }, 'Скопировать');
+    return h('div', { class: 'copyline' }, h('span', { class: 'field__label' }, label), h('div', { class: 'copyline__row' }, h('input', { class: 'input', value: url, readonly: true, onfocus: function (e) { e.target.select(); } }), btn));
+  }
+
   function editView() {
     var d = S.draft, a = d.data;
 
@@ -521,10 +532,13 @@
       slugInput.value = a.slug;
     };
     var slugBlock = d.isNew
-      ? field('Адрес страницы', h('div', { class: 'affix' }, h('span', {}, SITE_HOST + '/art/'), slugInput),
+      ? field('Адрес страницы', h('div', { class: 'affix' }, h('span', {}, SITE_HOST + '/en/art/'), slugInput),
           'Заполнится сам из английского названия. Его стоит выбрать один раз: на этот адрес будут вести пины в Pinterest.')
       : h('div', { class: 'field' }, h('span', { class: 'field__label' }, 'Адрес страницы'),
-          h('p', { class: 'url' }, SITE_HOST + '/art/', h('b', {}, a.slug + '/'), ' · ', h('a', { href: SITE_LINK + 'art/' + a.slug + '/', target: '_blank', rel: 'noopener' }, 'открыть ↗')),
+          h('p', { class: 'url' }, SITE_HOST + '/…/art/', h('b', {}, a.slug + '/'), ' · ',
+            h('a', { href: artUrl('ru', a.slug), target: '_blank', rel: 'noopener' }, 'по-русски ↗'), ' · ',
+            h('a', { href: artUrl('en', a.slug), target: '_blank', rel: 'noopener' }, 'по-английски ↗')),
+          copyLine('Ссылка для пина в Pinterest (английская версия)', publicArtUrl('en', a.slug)),
           h('span', { class: 'field__hint' }, 'Адрес не меняется, чтобы не сломать ссылки из Pinterest.'));
 
     // Цена в долларах: подсказка с автоматическим пересчётом
@@ -691,6 +705,12 @@
             field('Telegram', handleIn('telegram')),
             field('Instagram', handleIn('instagram'))),
           field('Pinterest (ссылка на профиль)', textInput(s, 'pinterest', { type: 'url', placeholder: 'https://ru.pinterest.com/…' }))),
+        section('Статистика — Яндекс Метрика', 'Номер счётчика из metrika.yandex.ru (только цифры). Пока поле пустое, статистика не собирается и баннер о cookies не показывается.',
+          h('div', { class: 'row row--narrow' }, field('Номер счётчика', textInput(s, 'metrikaId', { inputmode: 'numeric', placeholder: '12345678' })))),
+        section('Политика конфиденциальности', 'Кто отвечает за данные посетителей и куда писать по вопросам о них. Показывается на странице «Политика конфиденциальности».',
+          h('div', { class: 'row' },
+            field('Имя владельца сайта', textInput(s, 'ownerName', { placeholder: 'Татьяна …' }), 'Если пусто — «Татьяна, автор ZosyaHandmadePictures».'),
+            field('Email для вопросов о данных', textInput(s, 'ownerEmail', { type: 'email', placeholder: 'name@example.com' }), 'Если пусто — указывается Telegram.'))),
         section('Фото первого экрана', 'Большое фото одной из лучших работ вверху главной страницы. Лучше горизонтальное.',
           singlePhoto(d, s, 'heroPhoto', 'hero')),
         section('Фото «Обо мне»', 'Портрет или фото за работой.', singlePhoto(d, s, 'aboutPhoto', 'about')),
@@ -707,6 +727,8 @@
     var d = S.draft, s = d.data;
     if (!(s.usdRate > 0)) return setNotice('err', 'Укажите курс доллара.');
     if (!s.telegram) return setNotice('err', 'Укажите Telegram — на него ведёт кнопка «Купить».');
+    s.metrikaId = String(s.metrikaId || '').trim();
+    if (s.metrikaId && !/^\d{5,12}$/.test(s.metrikaId)) return setNotice('err', 'Номер счётчика Метрики — только цифры, например 12345678.');
     publish({ settings: s, uploads: d.uploads, removed: d.removed, message: 'Настройки сайта' })
       .then(function (ok) { if (ok) { d.orig = JSON.stringify(s); d.uploads = new Map(); d.removed = new Set(); openSettings(); } });
   }
