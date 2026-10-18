@@ -1,9 +1,94 @@
 [
   {
+    "slug": "girl-with-a-pearl-earring",
+    "title": {
+      "ru": "Девушка с жемчужной серёжкой",
+      "en": "Girl with a Pearl Earring"
+    },
+    "cats": [
+      "portraits",
+      "masterpieces",
+      "interior"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/girl-with-a-pearl-earring-1.jpg",
+      "uploads/girl-with-a-pearl-earring-2.jpg",
+      "uploads/girl-with-a-pearl-earring-3.jpg",
+      "uploads/girl-with-a-pearl-earring-4.jpg"
+    ],
+    "desc": {
+      "ru": "Авторская интерпретация «Девушки с жемчужной серёжкой» Вермеера в кубистичном стиле: тёмный фон с золотом, бархат, парча и атлас. Каждый кусочек ткани заправлен вручную стеком — без иглы и клея.",
+      "en": "A cubist interpretation of Vermeer’s Girl with a Pearl Earring: a dark background with gold, velvet, brocade and satin. Every piece of fabric is tucked in by hand — no needle, no glue."
+    },
+    "tone": "#B9C4C6"
+  },
+  {
+    "slug": "girl-in-a-poppy-field",
+    "title": {
+      "ru": "Девочка в маковом поле",
+      "en": "Girl in a Poppy Field"
+    },
+    "cats": [
+      "landscapes",
+      "portraits",
+      "interior"
+    ],
+    "w": 30,
+    "h": 42,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/girl-in-a-poppy-field-1.jpg",
+      "uploads/girl-in-a-poppy-field-2.jpg",
+      "uploads/girl-in-a-poppy-field-3.jpg"
+    ],
+    "desc": {
+      "ru": "Девушка в голубом платье идёт через маковое поле: тёплые охристые тона поля, голубое небо и яркие алые маки на переднем плане. Каждый лепесток и складка выложены вручную тканью. Формат А3, коричневая рама.",
+      "en": "A girl in a light blue dress walks through a field of bright red poppies, with golden fields and a soft blue sky. Every petal and fold is laid by hand in fabric. A3 format, brown frame."
+    },
+    "tone": "#D4B79A"
+  },
+  {
+    "slug": "starry-night",
+    "title": {
+      "ru": "Звёздная ночь (по Ван Гогу)",
+      "en": "Starry Night (after Van Gogh)"
+    },
+    "cats": [
+      "masterpieces",
+      "landscapes",
+      "interior"
+    ],
+    "w": 50,
+    "h": 40,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/starry-night-1.jpg",
+      "uploads/starry-night-2.jpg",
+      "uploads/starry-night-3.jpg"
+    ],
+    "desc": {
+      "ru": "Текстильная интерпретация «Звёздной ночи» Ван Гога. Больше ста фрагментов ткани собраны вручную в закрученное ночное небо, звёзды, кипарис, холмы и деревню: глубокий синий, голубой, тёплое золото и землисто-коричневый, тканевая рама ручной работы.",
+      "en": "A handmade textile interpretation of Van Gogh’s Starry Night. More than 100 fabric pieces are assembled by hand into the swirling sky, stars, cypress, hills and village: deep blues, warm gold and earthy brown, finished with a handmade fabric frame."
+    },
+    "tone": "#AEB6C8"
+  },
+  {
     "slug": "cat-in-red-glasses",
     "title": {
-      "ru": "Кошка в красных очках",
-      "en": "Cat in Red Glasses"
+      "ru": "Баба Мурра — кошка в красных очках",
+      "en": "Baba Murra — Cat in Red Glasses"
     },
     "cats": [
       "animals"
@@ -11,128 +96,522 @@
     "w": 40,
     "h": 50,
     "framed": true,
-    "price": 22000,
+    "price": null,
     "priceUsd": null,
     "status": "available",
-    "photos": [],
+    "photos": [
+      "uploads/cat-in-red-glasses-1.jpg"
+    ],
     "desc": {
       "ru": "Эта кошка создана из тканей разных фактур и оттенков. Красные очки, многоцветный шарф и спокойный серо-голубой фон делают работу современной и выразительной.",
-      "en": "This one-of-a-kind textile artwork combines carefully selected fabrics, rich textures and a contemporary colour palette. The red glasses and multicoloured scarf add a playful character to the piece."
-    },
-    "tone": "#B9C4C6"
-  },
-  {
-    "slug": "fox-in-autumn-forest",
-    "title": {
-      "ru": "Лиса в осеннем лесу",
-      "en": "Fox in the Autumn Forest"
-    },
-    "cats": [
-      "animals",
-      "landscapes"
-    ],
-    "w": 30,
-    "h": 40,
-    "framed": true,
-    "price": 16000,
-    "priceUsd": null,
-    "status": "available",
-    "photos": [],
-    "desc": {
-      "ru": "Описание работы — заглушка.",
-      "en": "Artwork description — placeholder."
-    },
-    "tone": "#D4B79A"
-  },
-  {
-    "slug": "portrait-in-blue",
-    "title": {
-      "ru": "Портрет в синем",
-      "en": "Portrait in Blue"
-    },
-    "cats": [
-      "portraits"
-    ],
-    "w": 50,
-    "h": 60,
-    "framed": true,
-    "price": 28000,
-    "priceUsd": null,
-    "status": "sold",
-    "photos": [],
-    "desc": {
-      "ru": "Описание работы — заглушка.",
-      "en": "Artwork description — placeholder."
-    },
-    "tone": "#AEB6C8"
-  },
-  {
-    "slug": "northern-lake",
-    "title": {
-      "ru": "Северное озеро",
-      "en": "Northern Lake"
-    },
-    "cats": [
-      "landscapes",
-      "interior"
-    ],
-    "w": 50,
-    "h": 70,
-    "framed": true,
-    "price": 30000,
-    "priceUsd": null,
-    "status": "available",
-    "photos": [],
-    "desc": {
-      "ru": "Описание работы — заглушка.",
-      "en": "Artwork description — placeholder."
+      "en": "Meet Baba Murra — a cat with red glasses, a colourful scarf and plenty of personality. Different colours, patterns and textures come together piece by piece; there will never be another Baba Murra exactly like her."
     },
     "tone": "#A9BDB4"
   },
   {
-    "slug": "sunflowers-after-van-gogh",
+    "slug": "stained-glass-cat",
     "title": {
-      "ru": "Подсолнухи (по Ван Гогу)",
-      "en": "Sunflowers (after Van Gogh)"
+      "ru": "Витражный кот",
+      "en": "Stained-Glass Cat"
     },
     "cats": [
-      "masterpieces",
+      "animals",
       "interior"
     ],
-    "w": 40,
-    "h": 50,
+    "w": null,
+    "h": null,
     "framed": true,
-    "price": 24000,
+    "price": null,
     "priceUsd": null,
     "status": "available",
-    "photos": [],
+    "photos": [
+      "uploads/stained-glass-cat-1.jpg",
+      "uploads/stained-glass-cat-2.jpg",
+      "uploads/stained-glass-cat-3.jpg"
+    ],
     "desc": {
-      "ru": "Описание работы — заглушка.",
-      "en": "Artwork description — placeholder."
+      "ru": "Кот с золотым нимбом в витражном стиле: голубой, шалфейный и золото. Становится центральным акцентом в гостиной или прихожей и хорошо сочетается с деревом, льном и плетением.",
+      "en": "A cat with a golden halo in a stained-glass style: blue, sage and gold. A striking centrepiece for a living room or hallway that pairs well with wood, linen and wicker."
     },
     "tone": "#DCCB96"
   },
   {
-    "slug": "letter-a-with-bunny",
+    "slug": "lioness-and-two-cubs",
     "title": {
-      "ru": "Буква «А» с зайчиком",
-      "en": "Letter A with a Bunny"
+      "ru": "Львица с львятами",
+      "en": "Lioness and Two Cubs"
+    },
+    "cats": [
+      "animals"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/lioness-and-two-cubs-1.jpg"
+    ],
+    "desc": {
+      "ru": "Нежный портрет львицы с двумя львятами — о тепле, защите и тихой связи матери и детей. Охра, золото, коричневый и глубокий зелёный. Работа 2026 года.",
+      "en": "A tender portrait of a lioness with her two cubs, exploring warmth, protection and the quiet bond between mother and young. Ochre, golden, brown and deep green fabrics. Created in 2026."
+    },
+    "tone": "#E1C7C2"
+  },
+  {
+    "slug": "tenderness",
+    "title": {
+      "ru": "Нежность",
+      "en": "Tenderness"
+    },
+    "cats": [
+      "animals",
+      "interior"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/tenderness-1.jpg",
+      "uploads/tenderness-2.jpg"
+    ],
+    "desc": {
+      "ru": "Момент нежности между двумя львами: даже дикие, сильные звери способны на трогательную близость. Тёплая охристая гамма, голубое небо, рама с растительным орнаментом.",
+      "en": "A moment of tenderness between two lions — even strong wild animals share quiet affection. A warm ochre palette, blue sky and a frame with a floral pattern."
+    },
+    "tone": "#C9B9A6"
+  },
+  {
+    "slug": "beagle-portrait",
+    "title": {
+      "ru": "Портрет бигля",
+      "en": "Beagle Portrait"
+    },
+    "cats": [
+      "animals",
+      "kids"
+    ],
+    "w": 21,
+    "h": 30,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/beagle-portrait-1.jpg"
+    ],
+    "desc": {
+      "ru": "Бигль, который будто вот-вот сорвётся с места: поднятый хвост, настороженные уши, взгляд, полный энергии. Формат А4.",
+      "en": "A beagle that looks ready to dash off: tail up, ears alert, full of energy. A4 format."
+    },
+    "tone": "#B8BFC9"
+  },
+  {
+    "slug": "horse-portrait",
+    "title": {
+      "ru": "Портрет лошади",
+      "en": "Horse Portrait"
+    },
+    "cats": [
+      "animals"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/horse-portrait-1.jpg"
+    ],
+    "desc": {
+      "ru": "Одна из самых ранних работ. Грива собрана из десятков отдельных прядей ткани в коричневых и золотых оттенках, глубокая синяя рама перекликается с холодным зимним небом.",
+      "en": "One of my earliest pieces. The mane is built from dozens of individual fabric strands in shades of brown and gold; the deep blue frame echoes the cool winter sky."
+    },
+    "tone": "#B4C2B2"
+  },
+  {
+    "slug": "sphynx-cat-portrait",
+    "title": {
+      "ru": "Портрет кота сфинкса",
+      "en": "Sphynx Cat Portrait"
+    },
+    "cats": [
+      "animals"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/sphynx-cat-portrait-1.jpg"
+    ],
+    "desc": {
+      "ru": "Серо-бежевые переходы ткани передают характерную морщинистую кожу сфинкса, голубые глаза добавляют выразительности. Портрет обрамляет разноцветная арка — синий, зелёный, золотистый.",
+      "en": "Grey and beige fabric gradients capture the sphynx’s distinctive wrinkled skin, and blue eyes add expression. A multicoloured arch of blue, green and gold frames the portrait."
+    },
+    "tone": "#D2C6B0"
+  },
+  {
+    "slug": "grey-cat",
+    "title": {
+      "ru": "Серый кот",
+      "en": "Grey Cat"
+    },
+    "cats": [
+      "animals"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/grey-cat-1.jpg",
+      "uploads/grey-cat-2.jpg"
+    ],
+    "desc": {
+      "ru": "Кот из фактурных тканей в оттенках серого, белого и бежевого, с яркими янтарными глазами. Многослойная мозаика из небольших кусочков ткани.",
+      "en": "A cat made of textured fabrics in grey, white and beige, with bright amber eyes — a layered mosaic of small fabric pieces."
+    },
+    "tone": "#B9C4C6"
+  },
+  {
+    "slug": "tabby-cat",
+    "title": {
+      "ru": "Полосатый кот",
+      "en": "Tabby Cat"
+    },
+    "cats": [
+      "animals",
+      "kids"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/tabby-cat-1.jpg"
+    ],
+    "desc": {
+      "ru": "Тёплый и уютный кот, собранный из множества кусочков ткани: фактура, узоры и оттенки становятся частью образа. Для уютного интерьера, детской или в подарок любителю кошек.",
+      "en": "A warm, cosy cat assembled from many pieces of fabric, where texture, pattern and colour become part of the image. For a cosy home, a child’s room or a cat lover."
+    },
+    "tone": "#D4B79A"
+  },
+  {
+    "slug": "deer-in-the-winter-forest",
+    "title": {
+      "ru": "Олень в зимнем лесу",
+      "en": "Deer in the Winter Forest"
+    },
+    "cats": [
+      "animals",
+      "landscapes",
+      "kids"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/deer-in-the-winter-forest-1.jpg"
+    ],
+    "desc": {
+      "ru": "Тихий зимний момент: олень в заснеженном лесу, собранный из узорчатых тканей. Слой за слоем разные фактуры складываются в тёплый, сказочный зимний пейзаж.",
+      "en": "A quiet winter moment: a gentle deer in a snowy forest, made from patterned fabrics. Layer by layer, textures and colours come together into a warm, whimsical winter scene."
+    },
+    "tone": "#AEB6C8"
+  },
+  {
+    "slug": "madonna-and-child",
+    "title": {
+      "ru": "Богородица с младенцем",
+      "en": "Madonna and Child"
+    },
+    "cats": [
+      "portraits",
+      "interior",
+      "kids"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/madonna-and-child-1.jpg",
+      "uploads/madonna-and-child-2.jpg",
+      "uploads/madonna-and-child-3.jpg"
+    ],
+    "desc": {
+      "ru": "Образ Богородицы с младенцем в витражном стиле: синий и золото, лучистый фон, серебристая рама с растительным орнаментом. Каждый лучик фона — отдельный кусочек хлопковой ткани.",
+      "en": "Madonna and Child in a stained-glass style: blue and gold, a radiant background and a silver frame with a floral pattern. Each ray of the background is a separate piece of cotton fabric."
+    },
+    "tone": "#A9BDB4"
+  },
+  {
+    "slug": "girl-in-a-hat",
+    "title": {
+      "ru": "Девушка в шляпе",
+      "en": "Girl in a Hat"
+    },
+    "cats": [
+      "portraits",
+      "landscapes"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/girl-in-a-hat-1.jpg"
+    ],
+    "desc": {
+      "ru": "Вечер у моря: солнце опускается за горизонт, девушка в большой шляпе смотрит вдаль. Каждый фрагмент ткани работает как мазок кисти — создаёт свет, движение и настроение.",
+      "en": "An evening by the sea: the sun sets and a girl in a wide hat gazes into the distance. Each fabric piece works like a brushstroke, creating light, movement and mood."
+    },
+    "tone": "#DCCB96"
+  },
+  {
+    "slug": "cowboy-on-the-fence",
+    "title": {
+      "ru": "Ковбой на заборе",
+      "en": "Cowboy on the Fence"
     },
     "cats": [
       "kids",
-      "names"
+      "interior"
     ],
-    "w": 25,
-    "h": 25,
-    "framed": false,
-    "price": 9000,
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
     "priceUsd": null,
-    "status": "sold",
-    "photos": [],
+    "status": "available",
+    "photos": [
+      "uploads/cowboy-on-the-fence-1.jpg",
+      "uploads/cowboy-on-the-fence-2.jpg"
+    ],
     "desc": {
-      "ru": "Описание работы — заглушка.",
-      "en": "Artwork description — placeholder."
+      "ru": "Тёплая деревенская сценка: мальчик-ковбой сидит на заборе спиной к зрителю. Шляпа с цветочным узором, красный платок, оливковый луг — для детской или загородного дома.",
+      "en": "A warm country scene: a little cowboy sits on a fence with his back to us. A floral hat, red neckerchief and olive meadow — for a child’s room or a country house."
     },
     "tone": "#E1C7C2"
+  },
+  {
+    "slug": "union-jack",
+    "title": {
+      "ru": "Флаг Великобритании",
+      "en": "Union Jack"
+    },
+    "cats": [
+      "interior"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/union-jack-1.jpg"
+    ],
+    "desc": {
+      "ru": "Флаг Великобритании в японской технике кинусайга — неожиданное пересечение профессии и хобби. Для кабинета, класса английского или комнаты подростка.",
+      "en": "The Union Jack in the Japanese kinusaiga technique — where Britain meets Japan. For a study, an English classroom or a teenager’s room."
+    },
+    "tone": "#C9B9A6"
+  },
+  {
+    "slug": "tumbling-blocks",
+    "title": {
+      "ru": "Объёмные кубики",
+      "en": "Tumbling Blocks"
+    },
+    "cats": [
+      "interior"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/tumbling-blocks-1.jpg",
+      "uploads/tumbling-blocks-2.jpg"
+    ],
+    "desc": {
+      "ru": "Классический узор «объёмные кубики» — иллюзия трёхмерности из десятков разных лоскутков: цветочных, в горошек, полосатых и однотонных. Одна из первых работ, больше десяти лет назад, и до сих пор в отличном состоянии.",
+      "en": "The classic tumbling blocks pattern — a 3D illusion made from dozens of fabric scraps: florals, polka dots, stripes and solids. One of my first pieces, over ten years old and still in excellent condition."
+    },
+    "tone": "#B8BFC9"
+  },
+  {
+    "slug": "lady-in-a-pink-hat",
+    "title": {
+      "ru": "Дама в розовой шляпе",
+      "en": "Lady in a Pink Hat"
+    },
+    "cats": [
+      "portraits"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "available",
+    "photos": [
+      "uploads/lady-in-a-pink-hat-1.jpg"
+    ],
+    "desc": {
+      "ru": "Ранняя работа 2018 года: смелые цвета, выразительные формы, богатые узоры и фактуры — время поиска собственного языка в ткани.",
+      "en": "An early piece from 2018: bold colours, expressive shapes, rich patterns and textures — from the time I was searching for my own visual language in fabric."
+    },
+    "tone": "#B4C2B2"
+  },
+  {
+    "slug": "name-set-miya",
+    "title": {
+      "ru": "Именной набор «МИЯ»",
+      "en": "Name Set “MIYA”"
+    },
+    "cats": [
+      "names",
+      "kids"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "private",
+    "photos": [
+      "uploads/name-set-miya-1.jpg",
+      "uploads/name-set-miya-2.jpg",
+      "uploads/name-set-miya-3.jpg"
+    ],
+    "desc": {
+      "ru": "Именной набор для детской, вдохновлённый гжельской росписью: синие узоры на белом, малиновые буквы, розовая рамка в горошек. Три девочки в шляпках, у каждой свой характер. Каждая буква 22 × 22 см. Сделан на заказ — такой же можно заказать с вашим именем.",
+      "en": "A name set for a child’s room inspired by Gzhel painting: blue patterns on white, raspberry letters and a pink polka-dot frame. Three girls in hats, each with her own character. Each letter is 22 × 22 cm. Made to order — you can order one with your own name."
+    },
+    "tone": "#D2C6B0"
+  },
+  {
+    "slug": "name-set-eva",
+    "title": {
+      "ru": "Именной набор «ЕВА»",
+      "en": "Name Set “EVA”"
+    },
+    "cats": [
+      "names",
+      "kids"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "private",
+    "photos": [
+      "uploads/name-set-eva-1.jpg",
+      "uploads/name-set-eva-2.jpg"
+    ],
+    "desc": {
+      "ru": "Три буквы с девочками в розовых оттенках — от нежно-пудрового до малинового. Рамка в горошек, фон с мелким сердечным узором. Сделан на заказ — такой же можно заказать с вашим именем.",
+      "en": "Three letters with girls in shades of pink, from soft powder to raspberry. A polka-dot frame and a background with tiny hearts. Made to order — you can order one with your own name."
+    },
+    "tone": "#B9C4C6"
+  },
+  {
+    "slug": "name-set-mira",
+    "title": {
+      "ru": "Именной набор «МИРА»",
+      "en": "Name Set “MIRA”"
+    },
+    "cats": [
+      "names",
+      "kids"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "private",
+    "photos": [
+      "uploads/name-set-mira-1.jpg",
+      "uploads/name-set-mira-2.jpg"
+    ],
+    "desc": {
+      "ru": "Четыре буквы с девочками в зелёно-жёлтых платьицах, по мотивам палитры ириса: золотистая рама, фиолетовые буквы. Можно повесить в ряд или «лесенкой». Сделан на заказ — такой же можно заказать с вашим именем.",
+      "en": "Four letters with girls in green and yellow dresses, inspired by the colours of an iris: gold frames and violet letters. Hang them in a row or as a staircase. Made to order — you can order one with your own name."
+    },
+    "tone": "#D4B79A"
+  },
+  {
+    "slug": "girl-in-the-wind",
+    "title": {
+      "ru": "Девушка на ветру",
+      "en": "Girl in the Wind"
+    },
+    "cats": [
+      "portraits",
+      "landscapes"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "private",
+    "photos": [
+      "uploads/girl-in-the-wind-1.jpg"
+    ],
+    "desc": {
+      "ru": "Синее развевающееся платье, горы, море и декоративная рама с мозаичными медальонами. Работа 2016 года, сделана в подарок.",
+      "en": "A flowing blue dress, mountains, the sea and a decorative frame with mosaic medallions. Made in 2016 as a gift."
+    },
+    "tone": "#AEB6C8"
+  },
+  {
+    "slug": "zebra",
+    "title": {
+      "ru": "Зебра",
+      "en": "Zebra"
+    },
+    "cats": [
+      "animals"
+    ],
+    "w": null,
+    "h": null,
+    "framed": true,
+    "price": null,
+    "priceUsd": null,
+    "status": "private",
+    "photos": [
+      "uploads/zebra-1.jpg"
+    ],
+    "desc": {
+      "ru": "Работа 2020 года из другого этапа творчества: смелые цвета, сильные контрасты, выразительные формы и фактурные ткани. Из личной коллекции.",
+      "en": "Created in 2020, from a different chapter of my work: bold colours, strong contrasts, expressive shapes and richly textured fabrics. From my personal collection."
+    },
+    "tone": "#A9BDB4"
   }
 ]

@@ -405,19 +405,25 @@
     return h('span', { class: 'mini', style: '--tone:' + (tone || '#D9D2C4') }, photo ? h('img', { src: photoUrl(photo), alt: '', loading: 'lazy' }) : null);
   }
 
+  // Статусы работы: «Не продаётся» — из личной коллекции или подарок, на сайте как проданная
+  var STATUS_LABEL = { available: 'В наличии', sold: 'Продано', 'private': 'Не продаётся' };
+  var NEXT_STATUS = { available: 'sold', sold: 'private', 'private': 'available' };
+
   function listView() {
     var rows = S.artworks.map(function (a, i) {
-      var sold = a.status === 'sold';
+      var sold = a.status !== 'available';
+      var meta = [a.w > 0 && a.h > 0 ? a.w + ' × ' + a.h + ' см' : 'без размера',
+        a.price > 0 ? rub(a.price) + ' · ' + usd(usdOf(a)) : 'цена по запросу'];
       return h('div', { class: 'work' + (sold ? ' is-sold' : '') },
         h('button', { class: 'work__main', onclick: function () { openEdit(i); } },
           mini(a.photos && a.photos[0], a.tone),
           h('span', { class: 'work__txt' },
             h('span', { class: 'work__title' }, a.title.ru || 'Без названия'),
-            h('span', { class: 'work__meta' }, a.w + ' × ' + a.h + ' см · ' + rub(a.price) + ' · ' + usd(usdOf(a)) + (a.photos && a.photos.length ? '' : ' · нет фото')))),
+            h('span', { class: 'work__meta' }, meta.join(' · ') + (a.photos && a.photos.length ? '' : ' · нет фото')))),
         h('button', {
           class: 'pill' + (sold ? ' pill--sold' : ''), title: 'Нажмите, чтобы поменять статус',
-          onclick: function () { a.status = sold ? 'available' : 'sold'; markDirty(); }
-        }, sold ? 'Продано' : 'В наличии'),
+          onclick: function () { a.status = NEXT_STATUS[a.status] || 'available'; markDirty(); }
+        }, STATUS_LABEL[a.status] || 'В наличии'),
         h('div', { class: 'work__order' },
           h('button', { class: 'icon', 'aria-label': 'Поднять выше', title: 'Выше', disabled: i === 0, onclick: function () { move(i, -1); } }, '↑'),
           h('button', { class: 'icon', 'aria-label': 'Опустить ниже', title: 'Ниже', disabled: i === S.artworks.length - 1, onclick: function () { move(i, 1); } }, '↓')));
@@ -427,7 +433,7 @@
         h('h1', {}, 'Работы'),
         h('button', { class: 'btn', onclick: function () { openEdit(-1); } }, '+ Добавить работу')),
       S.artworks.length
-        ? h('p', { class: 'hint' }, 'Порядок здесь — это порядок на сайте. Нажмите на работу, чтобы изменить её; на «В наличии / Продано» — чтобы сменить статус.')
+        ? h('p', { class: 'hint' }, 'Порядок здесь — это порядок на сайте. Нажмите на работу, чтобы изменить её; на статус — чтобы переключить «В наличии → Продано → Не продаётся».')
         : h('p', { class: 'empty' }, 'Пока нет ни одной работы.'),
       h('div', { class: 'works' }, rows),
       S.dirty ? h('div', { class: 'bar' }, h('div', { class: 'bar__inner' },
@@ -580,7 +586,7 @@
       }), h('span', {}, c.label));
     }));
 
-    var status = h('div', { class: 'seg', role: 'radiogroup' }, [['available', 'В наличии'], ['sold', 'Продано']].map(function (s) {
+    var status = h('div', { class: 'seg', role: 'radiogroup' }, [['available', 'В наличии'], ['sold', 'Продано'], ['private', 'Не продаётся']].map(function (s) {
       return h('label', {}, h('input', { type: 'radio', name: 'status', value: s[0], checked: a.status === s[0], onchange: function () { a.status = s[0]; } }), h('span', {}, s[1]));
     }));
 
@@ -596,7 +602,7 @@
             field('По-русски', textInput(a.title, 'ru', { placeholder: 'Кошка в красных очках' }, syncSlug)),
             field('По-английски', textInput(a.title, 'en', { placeholder: 'Cat in Red Glasses' }, syncSlug))),
           slugBlock),
-        section('Размер и цена', null,
+        section('Размер и цена', 'Можно оставить пустыми: без цены на сайте будет «Цена по запросу», без размера строка размера не показывается.',
           h('div', { class: 'row row--narrow' },
             field('Ширина, см', numInput(a, 'w', { placeholder: '40' })),
             field('Высота, см', numInput(a, 'h', { placeholder: '50' })),
@@ -604,7 +610,7 @@
             field('Цена, $ (для английской версии)', usdInput)),
           usdHint,
           h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: !!a.framed, onchange: function (e) { a.framed = e.target.checked; } }), 'В раме')),
-        section('Статус', 'Проданная работа остаётся на сайте приглушённой, вместо «Купить» — «Заказать похожую».', h('div', {}, status)),
+        section('Статус', 'Проданная или непродающаяся работа остаётся на сайте приглушённой, вместо «Купить» — «Заказать похожую».', h('div', {}, status)),
         section('Темы', 'По ним работает фильтр в каталоге. Можно выбрать несколько.', cats),
         section('Описание', 'Пара предложений о работе: ткани, цвета, настроение. Показывается в блоке «О работе».',
           h('div', { class: 'row' },
@@ -621,9 +627,8 @@
     var errs = [];
     if (!a.title.ru.trim()) errs.push('название по-русски');
     if (!a.title.en.trim()) errs.push('название по-английски');
-    if (!(a.w > 0) || !(a.h > 0)) errs.push('размер');
-    if (!(a.price > 0)) errs.push('цену в рублях');
     var out = errs.length ? ['Заполните: ' + errs.join(', ') + '.'] : [];
+    if ((a.w > 0) !== (a.h > 0)) out.push('Размер: укажите и ширину, и высоту — или оставьте обе пустыми.');
     if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(a.slug)) out.push('Адрес страницы: только латинские буквы, цифры и дефис.');
     else if (S.artworks.some(function (o, i) { return i !== index && o.slug === a.slug; })) out.push('Адрес «' + a.slug + '» уже занят другой работой.');
     return out;
@@ -634,6 +639,9 @@
     a.title.ru = a.title.ru.trim(); a.title.en = a.title.en.trim();
     a.desc.ru = (a.desc.ru || '').trim(); a.desc.en = (a.desc.en || '').trim();
     if (!(a.priceUsd > 0)) a.priceUsd = null;
+    if (!(a.price > 0)) a.price = null;
+    if (!(a.w > 0)) a.w = null;
+    if (!(a.h > 0)) a.h = null;
     if (d.isNew && !a.slug) a.slug = uniqueSlug(slugify(a.title.en) || slugify(a.title.ru), -1);
     var errs = validateWork(a, d.index);
     if (errs.length) return setNotice('err', errs.join('\n'));
