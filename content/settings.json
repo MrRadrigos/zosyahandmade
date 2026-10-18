@@ -4,12 +4,15 @@
   "instagram": "zosya_handmade",
   "pinterest": "https://ru.pinterest.com/ZosyaHandmadepictures/",
   "heroPhoto": "uploads/hero-b05hqgu6.jpg",
-  "aboutPhoto": "",
+  "aboutPhoto": "uploads/about-baihbwpe.jpg",
   "customPhotos": [
     "uploads/beagle-portrait-1.jpg",
     "uploads/girl-in-a-hat-1.jpg",
     "uploads/starry-night-1.jpg",
     "uploads/stained-glass-cat-2.jpg",
     "uploads/name-set-miya-1.jpg"
-  ]
+  ],
+  "metrikaId": "",
+  "ownerName": "",
+  "ownerEmail": ""
 }
